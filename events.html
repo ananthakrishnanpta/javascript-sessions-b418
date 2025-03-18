@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="window.alert('This is an alert')">
+        Alert Me... this button has an in-line script inside the onClick attribute
+    </button>
+
+    <button onclick="alertMe()">
+        This also alerts but is connected to the script>>... 
+    </button>
+
+    <table border>
+        <tr>
+            <td>
+                Change Button BG Color
+            </td>
+            <td>
+                <button onclick="changeButtonBG()" id="bt1">
+                    Change
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Change table data background
+            </td>
+            <td>
+                <Button onclick="changeTDBG()">
+                    Change
+                </Button>
+            </td>
+        </tr>
+
+    </table>
+
+    <script src="script8.js"></script>
+</body>
+</html>
