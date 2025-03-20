@@ -1,0 +1,46 @@
+#box {
+    height: 400px;
+    width: 400px;
+    /* background-color: yellowgreen; */
+    border: 1px solid;
+    margin: auto;
+    position: relative;
+    #ball {
+        border-radius: 50%;
+        height: 40px;
+        width: 40px;
+        /* background-color: white; */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+
+        display: flex;
+            align-items: center;
+            justify-content: center;
+        p {
+            height: 100%;
+            aspect-ratio: 100%;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+            overflow: hidden;
+            
+        }
+    }
+}
+
+
+.dark {
+    background-color: black;
+    color: white;
+}
+.light {
+    color: black;
+    background-color: greenyellow;
+}
