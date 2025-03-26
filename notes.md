@@ -81,3 +81,116 @@ newPromise.then(// in case of success
 - Calling `resolve` or `reject` inside a promise decides the outcome of that promise.
 - In short,  `.then` handles the outcome of `resolve` and `.catch()` handles the outcome of `reject`.
 
+---
+
+# 3. Async/Await  
+- Deeply nested callbacks can often lead to errors which is referred to as a **Callback hell**.
+- `Async/Await` is a modern and cleaner syntax for handling asynchronous operations, introduced in ES2017 (ES8).  
+- It simplifies working with Promises, making asynchronous code easier to read and write.
+- This makes asynchronous code look synchronous.
+
+### How It Works  
+
+1. **`async` Keyword**  
+   - Declares a function as asynchronous.  
+   - Always returns a `Promise`, even if no explicit Promise is returned.  
+
+2. **`await` Keyword**  
+   - Pauses the execution of the function until the Promise is resolved or rejected.  
+   - Can only be used inside an `async` function.
+
+- The `async` keyword ensures the function always returns a `Promise`.  
+- The `await` keyword pauses execution until the Promise is resolved/rejected.  
+- Combine `await` with `try...catch` for clean error handling.  
+- Use `Promise.all` with `Async/Await` for parallel execution.  
+---
+
+## Basic Syntax  
+
+```javascript
+async function exampleAsyncFunction() {
+    try {
+        let result = await someAsyncOperation();
+        console.log(result); // Logs the resolved value
+    } catch (error) {
+        console.error(error); // Handles any errors
+    } finally {
+        console.log("Operation complete");
+    }
+}
+```
+
+---
+
+## Sequential Async Operations  
+
+- `Async/Await` makes it easy to execute asynchronous tasks in sequence:  
+
+```javascript
+async function processSequentialTasks() {
+    try {
+        let data1 = await fetch("https://api.example.com/task1");
+        console.log("Task 1 Data:", await data1.json());
+
+        let data2 = await fetch("https://api.example.com/task2");
+        console.log("Task 2 Data:", await data2.json());
+
+        let data3 = await fetch("https://api.example.com/task3");
+        console.log("Task 3 Data:", await data3.json());
+    } catch (error) {
+        console.error("Error in sequential tasks:", error);
+    }
+}
+
+processSequentialTasks();
+```
+
+---
+
+## Parallel Async Operations  
+
+- For independent tasks that can be executed concurrently, use `Promise.all` with `Async/Await`:  
+
+```javascript
+async function processParallelTasks() {
+    try {
+        let [task1, task2, task3] = await Promise.all([
+            fetch("https://api.example.com/task1"),
+            fetch("https://api.example.com/task2"),
+            fetch("https://api.example.com/task3"),
+        ]);
+
+        console.log("Task 1 Data:", await task1.json());
+        console.log("Task 2 Data:", await task2.json());
+        console.log("Task 3 Data:", await task3.json());
+    } catch (error) {
+        console.error("Error in parallel tasks:", error);
+    }
+}
+
+processParallelTasks();
+```
+
+---
+
+## Error Handling  
+
+- Use `try...catch` blocks to manage errors effectively:  
+
+```javascript
+async function fetchWithErrorHandling() {
+    try {
+        let response = await fetch("https://api.nonexistentendpoint.com");
+        let data = await response.json();
+        console.log("Fetched Data:", data);
+    } catch (error) {
+        console.error("Error occurred:", error);
+    }
+}
+
+fetchWithErrorHandling();
+```
+
+
+
+---
